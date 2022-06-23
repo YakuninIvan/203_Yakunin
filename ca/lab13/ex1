@@ -1,0 +1,7 @@
+#!/bin/sh
+echo -n "Enter your name: "
+if read A; then
+	echo "Hello, $A!"
+else
+	echo "Hello, tmpuser?"
+fi

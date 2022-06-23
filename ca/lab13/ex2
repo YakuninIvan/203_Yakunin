@@ -1,0 +1,23 @@
+#!/bin/sh
+
+sum()
+{
+	t=0
+	for arg; do
+		if expr $t + $arg > /dev/null 2> /dev/null; then
+			t=$(expr $t + $arg)
+		else
+			t=0
+			break
+		fi
+	done
+	return $t
+}
+
+read a b; sum $a $b; t1=$?
+read a b; sum $a $b; t2=$?
+if expr $t1 = $t2 >/dev/null; then
+	echo "Equal"
+else
+	echo "Not equal"
+fi
